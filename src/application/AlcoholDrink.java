@@ -10,10 +10,10 @@ public class AlcoholDrink extends Drink
 		this.alkoAmount = 0d;
 	}
 	
-	public AlcoholDrink(String name, double purPrice, String kind, double volume, int amount, double alkoAmount)
+	public AlcoholDrink(String name, double purPrice, String kind, double volume, int amount, double alcoAmount)
 	{
 		super(name, purPrice, kind, volume, amount);
-		this.alkoAmount = alkoAmount;
+		this.alkoAmount = alcoAmount;
 	}
 	
 	public String toString()
