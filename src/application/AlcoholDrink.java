@@ -20,7 +20,7 @@ public class AlcoholDrink extends Drink
 	{
 		StringBuilder sb = new StringBuilder(super.toString());
 		
-		sb.append(", \"" + this.alkoAmount + System.lineSeparator());
+		sb.append(", \"" + this.alkoAmount + "\"" + System.lineSeparator());
 		
 		return sb.toString();
 	}

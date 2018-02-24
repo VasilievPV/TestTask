@@ -39,6 +39,7 @@ public class UnAlñoholDrink extends Drink
 				else
 					sb.append(", ");
 			}
+			sb.append(System.lineSeparator());
 		}
 		else
 			System.out.println("Error: Drink havn`t composition;");
