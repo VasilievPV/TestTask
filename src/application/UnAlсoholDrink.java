@@ -17,6 +17,7 @@ public class UnAlñoholDrink extends Drink
 	public UnAlñoholDrink(String name, double purPrice, String kind, double volume, int amount, String... constituents)
 	{
 		super(name,purPrice,kind,volume,amount);
+		this.composition = new ArrayList<String>();
 		for(String s : constituents)
 		{
 			this.composition.add(s);

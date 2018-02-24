@@ -13,14 +13,28 @@ public final class Reader
 	public static List<Drink> read(String filePath)
 	{
 		List<Drink> tempList = new ArrayList<Drink>();
-		try(Scanner in = new Scanner(new File(filePath)))
+		List<String> lines = new ArrayList<String>();
+		
+		try(Scanner scan = new Scanner(new File(filePath)))
 		{
-			//getFromFile(in, arr);
+			if (scan.nextLine() == Constants.DATABASE_NAME)
+			{
+				while(scan.hasNextLine())
+				{
+					lines.add(scan.nextLine());
+				}
+			}
+			else
+			{
+				System.out.println(Constants.WRONG_FILE);
+				return null;
+			}
 		}
 		catch (FileNotFoundException e)
 		{
 			e.printStackTrace();
 		}
+		
 		
 		return null;
 	}

@@ -37,16 +37,23 @@ public class Store
 			if(constituents != null)
 			{
 				this.productRange.add(new UnAlñoholDrink(name, purPrice, kind, volume, amount, constituents));
+				System.out.println(name + " added in amount of " + amount);
 			}
 			else
 			{
 				this.productRange.add(new AlcoholDrink(name, purPrice, kind, volume, amount, alcoAmount));
+				System.out.println(name + " added in amount of " + amount);
 			}
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
+	}
+	
+	public List<Drink> getProductRange()
+	{
+		return this.productRange;
 	}
 	
 }

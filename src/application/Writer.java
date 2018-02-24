@@ -8,8 +8,9 @@ public final class Writer
 {
 	public static void write(String filePath, List<Drink> drinkRange)
 	{
-		StringBuilder sb = new StringBuilder();
-		sb.append("drinkRange Data Base" + System.lineSeparator());
+		StringBuilder sbAlco = new StringBuilder();
+		StringBuilder sbUnAlco = new StringBuilder();
+		sbAlco.append(Constants.DATABASE_NAME + System.lineSeparator());
 		
 		for(Drink d : drinkRange)
 		{
@@ -17,13 +18,13 @@ public final class Writer
 			{
 				AlcoholDrink ad = (AlcoholDrink)d;
 				System.out.println("this is alco drink;");
-				sb.append(ad.toString());
+				sbAlco.append(ad.toString());
 			}
 			catch(ClassCastException e)
 			{				
 				System.out.println("this is unalco drink;");
 				UnAlñoholDrink uad = (UnAlñoholDrink)d;
-				sb.append(uad.toString());
+				sbUnAlco.append(uad.toString());
 			}
 			
 		}
@@ -31,7 +32,10 @@ public final class Writer
 		try 
 		{
 			FileWriter fw = new FileWriter(filePath);
-			fw.write(sb.toString());
+			fw.write(sbAlco.toString());
+			fw.write(System.lineSeparator());
+			fw.write(sbUnAlco.toString());
+			fw.close();
 		}
 		catch (IOException e)
 		{
