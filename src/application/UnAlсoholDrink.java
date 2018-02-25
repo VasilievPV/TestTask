@@ -14,6 +14,18 @@ public class UnAlñoholDrink extends Drink
 		this.composition = new ArrayList<String>();
 	}
 	
+	public UnAlñoholDrink(String name, double purPrice, String kind, double volume, int amount, String constituents)
+	{
+		super(name,purPrice,kind,volume,amount);
+		this.composition = new ArrayList<String>();
+		String line = constituents.substring(1, constituents.length() - 1);
+		String[] arrConstituents = line.split(", ");
+		for(String s : arrConstituents)
+		{
+			this.composition.add(s);
+		}
+	}
+	
 	public UnAlñoholDrink(String name, double purPrice, String kind, double volume, int amount, String... constituents)
 	{
 		super(name,purPrice,kind,volume,amount);
@@ -45,5 +57,10 @@ public class UnAlñoholDrink extends Drink
 			System.out.println("Error: Drink havn`t composition;");
 		
 		return sb.toString();
+	}
+	
+	public String getName()
+	{
+		return super.getName();
 	}
 }

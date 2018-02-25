@@ -31,10 +31,10 @@ public class Drink
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append("\"" + this.name + "\", ");
-		sb.append("\"" + this.purPrice + "\", ");
+		sb.append(this.purPrice + ", ");
 		sb.append("\"" + this.kind + "\", ");
-		sb.append("\"" + this.volume + "\", ");
-		sb.append("\"" + this.amount + "\"");
+		sb.append(this.volume + ", ");
+		sb.append(this.amount);
 		
 		return sb.toString();
 	}
@@ -42,5 +42,10 @@ public class Drink
 	public void addAmount(int amount)
 	{
 		this.amount += amount;
+	}
+	
+	public String getName()
+	{
+		return this.name;
 	}
 }

@@ -66,4 +66,9 @@ public class Store
 		this.productRange.get(name).addAmount(amount);
 	}
 	
+	public void setProductRange(Hashtable<String, Drink> productRange)
+	{
+		this.productRange = productRange;
+	}
+	
 }
