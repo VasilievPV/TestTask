@@ -38,4 +38,9 @@ public class Drink
 		
 		return sb.toString();
 	}
+	
+	public void addAmount(int amount)
+	{
+		this.amount += amount;
+	}
 }

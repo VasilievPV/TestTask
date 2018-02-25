@@ -24,6 +24,8 @@ public class MainViewController implements Initializable
 		s.addDrink("Наш Сок абрикосовый", 25, "Соки", 2.0, 35, 0, "Мякоть абрикоса", "E200", "E554");
 		s.addDrink("Наш Сок апельсиновый", 25, "Соки", 2.0, 35, 0, "Мякоть апельсина", "E200", "E554");
 		s.addDrink("Первак", 70.5, "крепкие напитки", 0.5, 30, 39.5, null);
+		s.addDrink("Первак", 70.5, "крепкие напитки", 0.5, 30, 39.5, null);
+		s.purchaseExistingDrink("NIMMIROFF", 10);
 		Writer.write("dataBase.csv", s.getProductRange());
 		int a=0;
 		a++;

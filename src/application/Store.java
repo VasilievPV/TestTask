@@ -61,4 +61,9 @@ public class Store
 		return this.productRange;
 	}
 	
+	public void purchaseExistingDrink(String name, int amount)
+	{
+		this.productRange.get(name).addAmount(amount);
+	}
+	
 }
