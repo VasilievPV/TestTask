@@ -2,9 +2,6 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import org.omg.CORBA.Environment;
-
 import application.Constants;
 import application.Store;
 import application.Writer;
