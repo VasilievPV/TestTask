@@ -27,11 +27,11 @@ public class MainViewController implements Initializable
 		s.addDrink("Первак", 70.5, "крепкие напитки", 0.5, 30, 39.5, null);
 		s.addDrink("Первак", 70.5, "крепкие напитки", 0.5, 30, 39.5, null);
 		s.purchaseExistingDrink("NIMMIROFF", 10);
-		Writer.write("dataBase.csv", s.getProductRange());*/
+		Writer.write("dataBase.csv", s.getProductRange());
 		s.setProductRange(Reader.read(Constants.DATABASE_FILE_NAME));
 		
 		int a=0;
-		a++;
+		a++;*/
 	}
 	
 
