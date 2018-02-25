@@ -1,6 +1,9 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.Enumeration;
+import java.util.Hashtable;
 import java.util.List;
 
 public class Store
@@ -8,14 +11,14 @@ public class Store
 	//Fields
 	private boolean Is_Open;
 	private double cashBox;
-	private List<Drink> productRange;
+	private Hashtable<String, Drink> productRange;
 	
 	//Constructors
 	public Store()
 	{
 		this.Is_Open = false;
 		this.cashBox = 0;
-		this.productRange = new ArrayList<Drink>();
+		this.productRange = new Hashtable<String, Drink>();
 	}
 	
 	
@@ -36,12 +39,14 @@ public class Store
 		{
 			if(constituents != null)
 			{
-				this.productRange.add(new UnAlñoholDrink(name, purPrice, kind, volume, amount, constituents));
+				//this.productRange.add(new UnAlñoholDrink(name, purPrice, kind, volume, amount, constituents));
+				this.productRange.put(name, new UnAlñoholDrink(name, purPrice, kind, volume, amount, constituents));
 				System.out.println(name + " added in amount of " + amount);
 			}
 			else
 			{
-				this.productRange.add(new AlcoholDrink(name, purPrice, kind, volume, amount, alcoAmount));
+				//this.productRange.add(new AlcoholDrink(name, purPrice, kind, volume, amount, alcoAmount));
+				this.productRange.put(name, new AlcoholDrink(name, purPrice, kind, volume, amount, alcoAmount));
 				System.out.println(name + " added in amount of " + amount);
 			}
 		}
@@ -51,7 +56,7 @@ public class Store
 		}
 	}
 	
-	public List<Drink> getProductRange()
+	public Hashtable<String, Drink> getProductRange()
 	{
 		return this.productRange;
 	}

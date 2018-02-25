@@ -2,17 +2,18 @@ package application;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Hashtable;
 import java.util.List;
 
 public final class Writer
 {
-	public static void write(String filePath, List<Drink> drinkRange)
+	public static void write(String filePath, Hashtable<String, Drink> drinkRange)
 	{
 		StringBuilder sbAlco = new StringBuilder();
 		StringBuilder sbUnAlco = new StringBuilder();
 		sbAlco.append(Constants.DATABASE_NAME + System.lineSeparator());
 		
-		for(Drink d : drinkRange)
+		for(Drink d : drinkRange.values())
 		{
 			try
 			{
