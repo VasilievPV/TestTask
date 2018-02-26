@@ -41,7 +41,7 @@ public class LifeEmulation
 		this.store = store;
 		this.ldt = LocalDateTime.now();
 		this.timer = new Timer("TimeThread");
-		if (ldt.getHour() >= 8 && ldt.getHour() <= 21)
+		if (ldt.getHour() >= 8 && ldt.getHour() < 21)
 		{
 			store.open();
 			setRules();
