@@ -7,13 +7,13 @@ import java.util.List;
 
 public final class Writer
 {
-	public static void write(String filePath, Hashtable<String, Drink> drinkRange)
+	public static void write(String filePath, Hashtable<String, Drink> productRange)
 	{
 		StringBuilder sbAlco = new StringBuilder();
 		StringBuilder sbUnAlco = new StringBuilder();
 		sbAlco.append(Constants.DATABASE_NAME + System.lineSeparator());
 		
-		for(Drink d : drinkRange.values())
+		for(Drink d : productRange.values())
 		{
 			try
 			{

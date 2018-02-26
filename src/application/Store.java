@@ -1,12 +1,13 @@
 package application;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Store
 {
@@ -14,6 +15,7 @@ public class Store
 	private boolean Is_Open;
 	private double cashBox;
 	private Hashtable<String, Drink> productRange;
+	private int extraCharge;
 	
 	
 	//Constructors
@@ -22,7 +24,6 @@ public class Store
 		this.Is_Open = false;
 		this.cashBox = 0;
 		this.productRange = new Hashtable<String, Drink>();
-		LocalDateTime ldt = LocalDateTime.now();
 		
 	}
 	
@@ -31,12 +32,13 @@ public class Store
 	public void open ()
 	{
 		this.Is_Open = true;
-		this.productRange =Reader.read(Constants.DATABASE_FILE_NAME);
+		this.productRange = Reader.read(Constants.DATABASE_FILE_NAME);
 	}
 	
 	public void close()
 	{
 		this.Is_Open = false;
+		Writer.write(Constants.DATABASE_FILE_NAME, this.productRange);
 	}
 
 	public void addDrink(String name, double purPrice, String kind, double volume, int amount, double alcoAmount, String...constituents )
