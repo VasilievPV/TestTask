@@ -16,6 +16,7 @@ public class Store
 	private double cashBox;
 	private Hashtable<String, Drink> productRange;
 	private int extraCharge;
+	private LifeEmulation lifeEmulation;
 	
 	
 	//Constructors
@@ -24,7 +25,7 @@ public class Store
 		this.Is_Open = false;
 		this.cashBox = 0;
 		this.productRange = new Hashtable<String, Drink>();
-		
+		this.lifeEmulation= new LifeEmulation(this);
 	}
 	
 	
@@ -33,12 +34,16 @@ public class Store
 	{
 		this.Is_Open = true;
 		this.productRange = Reader.read(Constants.DATABASE_FILE_NAME);
+		
+		System.out.println("Store opened");
 	}
 	
 	public void close()
 	{
 		this.Is_Open = false;
 		Writer.write(Constants.DATABASE_FILE_NAME, this.productRange);
+		
+		System.out.println("Store closed");
 	}
 
 	public void addDrink(String name, double purPrice, String kind, double volume, int amount, double alcoAmount, String...constituents )
@@ -77,6 +82,18 @@ public class Store
 	public void setProductRange(Hashtable<String, Drink> productRange)
 	{
 		this.productRange = productRange;
+	}
+
+
+	public int getExtraCharge() 
+	{
+		return extraCharge;
+	}
+
+
+	public void setExtraCharge(int extraCharge)
+	{
+		this.extraCharge = extraCharge;
 	}
 	
 }
