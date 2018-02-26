@@ -97,5 +97,9 @@ public class Store
 		this.extraCharge = extraCharge;
 	}
 	
-	
+	public Drink createDrink()
+	{
+		
+		return null;
+	}
 }
