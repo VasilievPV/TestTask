@@ -4,8 +4,10 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -14,7 +16,7 @@ public class Store
 	//Fields
 	private boolean isOpen;//rename
 	private double cashBox;
-	private Hashtable<String, Drink> productRange;
+	private Map<String, Drink> productRange;
 	private int extraCharge;
 	private StoreEmulation storeEmulation;
 	
@@ -24,7 +26,7 @@ public class Store
 	{
 		this.isOpen = false;
 		this.cashBox = 0;
-		this.productRange = new Hashtable<String, Drink>();
+		this.productRange = new HashMap<String, Drink>();
 		this.storeEmulation= new StoreEmulation(this);
 		this.storeEmulation.startEmulation();
 	}
@@ -52,6 +54,7 @@ public class Store
 		try
 		{
 			this.productRange.put(name, this.createDrink(name, purPrice, kind, volume, amount, alcoAmount, constituents));
+			System.out.println(name + " added in amount of " + amount);
 		}
 		catch (Exception e)
 		{
@@ -59,7 +62,7 @@ public class Store
 		}
 	}
 	
-	public Hashtable<String, Drink> getProductRange()
+	public Map<String, Drink> getProductRange()
 	{
 		return this.productRange;
 	}
@@ -90,15 +93,11 @@ public class Store
 	{
 		if(constituents != null)
 		{
-			//this.productRange.add(new UnAlñoholDrink(name, purPrice, kind, volume, amount, constituents));
 			return new NonAlcohollDrink(name, purPrice, kind, volume, amount, constituents);
-			//System.out.println(name + " added in amount of " + amount);
 		}
 		else
 		{
-			//this.productRange.add(new AlcoholDrink(name, purPrice, kind, volume, amount, alcoAmount));
 			return new AlcoholDrink(name, purPrice, kind, volume, amount, alcoAmount);
-			//System.out.println(name + " added in amount of " + amount);
 		}
 	}
 }

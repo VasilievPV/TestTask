@@ -4,10 +4,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 
 public final class Writer
 {
-	public static void write(String filePath, Hashtable<String, Drink> productRange)
+	public static void write(String filePath, Map<String, Drink> productRange)
 	{
 		StringBuilder sbAlco = new StringBuilder();
 		StringBuilder sbNonAlco = new StringBuilder();

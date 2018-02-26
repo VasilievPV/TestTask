@@ -16,16 +16,7 @@ public class StoreEmulation
 	private Random random;
 	
 	private TimerTask changeExCharge;
-	
-	private TimerTask closeStore = new TimerTask() {
-		
-		@Override
-		public void run()
-		{
-			if(ldt.getHour() < 21)
-				store.close();
-		}
-	};
+	private TimerTask closeStore;
 	
 	public StoreEmulation(Store store)
 	{
@@ -45,6 +36,16 @@ public class StoreEmulation
 			{
 				if(ldt.getHour() < 18)
 					store.setExtraCharge(8);
+			}
+		};
+		
+		this.closeStore = new TimerTask() {
+			
+			@Override
+			public void run()
+			{
+				if(ldt.getHour() < 21)
+					store.close();
 			}
 		};
 		

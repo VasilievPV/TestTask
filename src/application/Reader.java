@@ -7,13 +7,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public final class Reader
 {
-	public static Hashtable<String, Drink> read(String filePath)
+	public static Map<String, Drink> read(String filePath)
 	{
-		Hashtable<String, Drink> temp = new Hashtable<String, Drink>();
+		Map<String, Drink> temp = new Hashtable<String, Drink>();
 		List<String> alcoDrinks = new ArrayList<String>();
 		List<String> unAlcoDrinks = new ArrayList<String>();
 		
