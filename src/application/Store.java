@@ -12,27 +12,28 @@ import java.util.TimerTask;
 public class Store
 {
 	//Fields
-	private boolean Is_Open;
+	private boolean isOpen;//rename
 	private double cashBox;
 	private Hashtable<String, Drink> productRange;
 	private int extraCharge;
-	private LifeEmulation lifeEmulation;
+	private StoreEmulation storeEmulation;
 	
 	
 	//Constructors
 	public Store()
 	{
-		this.Is_Open = false;
+		this.isOpen = false;
 		this.cashBox = 0;
 		this.productRange = new Hashtable<String, Drink>();
-		this.lifeEmulation= new LifeEmulation(this);
+		this.storeEmulation= new StoreEmulation(this);
+		this.storeEmulation.startEmulation();
 	}
 	
 	
 	//Methods
 	public void open ()
 	{
-		this.Is_Open = true;
+		this.isOpen = true;
 		this.productRange = Reader.read(Constants.DATABASE_FILE_NAME);
 		
 		System.out.println("Store opened");
@@ -40,7 +41,7 @@ public class Store
 	
 	public void close()
 	{
-		this.Is_Open = false;
+		this.isOpen = false;
 		Writer.write(Constants.DATABASE_FILE_NAME, this.productRange);
 		
 		System.out.println("Store closed");
@@ -50,10 +51,10 @@ public class Store
 	{
 		try
 		{
-			if(constituents != null)
+			if(constituents != null)//crateDrink
 			{
 				//this.productRange.add(new UnAlñoholDrink(name, purPrice, kind, volume, amount, constituents));
-				this.productRange.put(name, new UnAlñoholDrink(name, purPrice, kind, volume, amount, constituents));
+				this.productRange.put(name, new NonAlcohollDrink(name, purPrice, kind, volume, amount, constituents));
 				System.out.println(name + " added in amount of " + amount);
 			}
 			else
@@ -95,5 +96,6 @@ public class Store
 	{
 		this.extraCharge = extraCharge;
 	}
+	
 	
 }

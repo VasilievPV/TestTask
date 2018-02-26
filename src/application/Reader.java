@@ -54,7 +54,7 @@ public final class Reader
 		}
 		for(String line : unAlcoDrinks)
 		{
-			UnAlñoholDrink uad = getUnAlcoDrinkFromString(line);
+			NonAlcohollDrink uad = getUnAlcoDrinkFromString(line);
 			temp.put(uad.getName(), uad);
 		}
 		
@@ -70,12 +70,12 @@ public final class Reader
 		return new AlcoholDrink(fields[0].substring(1, fields[0].length() - 1), Double.parseDouble(fields[1]), fields[2].substring(1, fields[2].length() - 1), Double.parseDouble(fields[3]), Integer.parseInt(fields[4]), Double.parseDouble(fields[5].substring(0, fields[5].length()-1)));
 	}
 	
-	private static UnAlñoholDrink getUnAlcoDrinkFromString(String line)
+	private static NonAlcohollDrink getUnAlcoDrinkFromString(String line)
 	{
 		String[] fields = new String[Constants.DRINK_FIELDS_COUNT];
 		
 		fields = line.split(", ");
 		
-		return new UnAlñoholDrink(fields[0].substring(1, fields[0].length() - 1), Double.parseDouble(fields[1]), fields[2].substring(1, fields[2].length() - 1), Double.parseDouble(fields[3]), Integer.parseInt(fields[4]), fields[5]);
+		return new NonAlcohollDrink(fields[0].substring(1, fields[0].length() - 1), Double.parseDouble(fields[1]), fields[2].substring(1, fields[2].length() - 1), Double.parseDouble(fields[3]), Integer.parseInt(fields[4]), fields[5]);
 	}
 }

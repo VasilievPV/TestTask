@@ -8,22 +8,14 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class LifeEmulation
+public class StoreEmulation
 {
 	private LocalDateTime ldt;
 	private Timer timer;
 	private Store store;
 	private Random random;
 	
-	private TimerTask changeExCharge = new TimerTask() {
-		
-		@Override
-		public void run()
-		{
-			if(ldt.getHour() < 18)
-				store.setExtraCharge(8);
-		}
-	};
+	private TimerTask changeExCharge;
 	
 	private TimerTask closeStore = new TimerTask() {
 		
@@ -35,12 +27,28 @@ public class LifeEmulation
 		}
 	};
 	
-	public LifeEmulation(Store store)
+	public StoreEmulation(Store store)
 	{
 		this.random = new Random();
 		this.store = store;
 		this.ldt = LocalDateTime.now();
 		this.timer = new Timer("TimeThread");
+		
+	}
+	
+	public void startEmulation()
+	{
+		this.changeExCharge  = new TimerTask()
+		{			
+			@Override
+			public void run()
+			{
+				if(ldt.getHour() < 18)
+					store.setExtraCharge(8);
+			}
+		};
+		
+		
 		if (ldt.getHour() >= 8 && ldt.getHour() < 21)
 		{
 			store.open();
@@ -50,6 +58,9 @@ public class LifeEmulation
 		{
 			System.out.println("This is not a time to open store");
 		}
+		
+		
+		
 	}
 	
 	private void setRules()

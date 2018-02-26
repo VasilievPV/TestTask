@@ -10,7 +10,7 @@ public final class Writer
 	public static void write(String filePath, Hashtable<String, Drink> productRange)
 	{
 		StringBuilder sbAlco = new StringBuilder();
-		StringBuilder sbUnAlco = new StringBuilder();
+		StringBuilder sbNonAlco = new StringBuilder();
 		sbAlco.append(Constants.DATABASE_NAME + System.lineSeparator());
 		
 		for(Drink d : productRange.values())
@@ -23,9 +23,9 @@ public final class Writer
 			}
 			catch(ClassCastException e)
 			{				
-				System.out.println("this is unalco drink;");
-				UnAlñoholDrink uad = (UnAlñoholDrink)d;
-				sbUnAlco.append(uad.toString());
+				System.out.println("this is non-alco drink;");
+				NonAlcohollDrink uad = (NonAlcohollDrink)d;
+				sbNonAlco.append(uad.toString());
 			}
 			
 		}
@@ -35,7 +35,7 @@ public final class Writer
 			FileWriter fw = new FileWriter(filePath);
 			fw.write(sbAlco.toString());
 			fw.write(System.lineSeparator());
-			fw.write(sbUnAlco.toString());
+			fw.write(sbNonAlco.toString());
 			fw.close();
 		}
 		catch (IOException e)
