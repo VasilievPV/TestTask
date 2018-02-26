@@ -25,7 +25,7 @@ public final class Writer
 			catch(ClassCastException e)
 			{				
 				System.out.println("this is non-alco drink;");
-				NonAlcohollDrink uad = (NonAlcohollDrink)d;
+				NonAlcoholDrink uad = (NonAlcoholDrink)d;
 				sbNonAlco.append(uad.toString());
 			}
 			

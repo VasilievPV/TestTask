@@ -19,7 +19,7 @@ public class MainViewController implements Initializable
 	private void btn_Test_Click()
 	{
 		Store s = new Store();
-		
+		s.open();
 		/*s.addDrink("NIMMIROFF", 90.3, "крепкие напитки", 0.5, 20, 40.0, null);
 		s.addDrink("Наш Сок яблочный", 25, "Соки", 2.0, 35, 0, "Мякоть яблока", "E200", "E554");
 		s.addDrink("Наш Сок абрикосовый", 25, "Соки", 2.0, 35, 0, "Мякоть абрикоса", "E200", "E554");

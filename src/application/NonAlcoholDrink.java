@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class NonAlcohollDrink extends Drink
+public class NonAlcoholDrink extends Drink
 {
 	private List<String> composition;
 	
-	public NonAlcohollDrink()
+	public NonAlcoholDrink()
 	{
 		super();
 		this.composition = new ArrayList<String>();
 	}
 	
-	public NonAlcohollDrink(String name, double purPrice, String kind, double volume, int amount, String constituents)
+	public NonAlcoholDrink(String name, double purPrice, String kind, double volume, int amount, String constituents)
 	{
 		super(name,purPrice,kind,volume,amount);
 		this.composition = new ArrayList<String>();
@@ -26,7 +26,7 @@ public class NonAlcohollDrink extends Drink
 		}
 	}
 	
-	public NonAlcohollDrink(String name, double purPrice, String kind, double volume, int amount, String... constituents)
+	public NonAlcoholDrink(String name, double purPrice, String kind, double volume, int amount, String... constituents)
 	{
 		super(name,purPrice,kind,volume,amount);
 		this.composition = new ArrayList<String>();
@@ -63,4 +63,5 @@ public class NonAlcohollDrink extends Drink
 	{
 		return super.getName();
 	}
+	
 }

@@ -93,7 +93,7 @@ public class Store
 	{
 		if(constituents != null)
 		{
-			return new NonAlcohollDrink(name, purPrice, kind, volume, amount, constituents);
+			return new NonAlcoholDrink(name, purPrice, kind, volume, amount, constituents);
 		}
 		else
 		{
