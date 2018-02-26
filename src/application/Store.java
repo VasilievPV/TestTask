@@ -88,7 +88,7 @@ public class Store
 	
 	public Drink createDrink(String name, double purPrice, String kind, double volume, int amount, double alcoAmount, String...constituents)
 	{
-		if(constituents != null)//crateDrink
+		if(constituents != null)
 		{
 			//this.productRange.add(new UnAlñoholDrink(name, purPrice, kind, volume, amount, constituents));
 			return new NonAlcohollDrink(name, purPrice, kind, volume, amount, constituents);
