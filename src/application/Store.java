@@ -51,18 +51,7 @@ public class Store
 	{
 		try
 		{
-			if(constituents != null)//crateDrink
-			{
-				//this.productRange.add(new UnAlñoholDrink(name, purPrice, kind, volume, amount, constituents));
-				this.productRange.put(name, new NonAlcohollDrink(name, purPrice, kind, volume, amount, constituents));
-				System.out.println(name + " added in amount of " + amount);
-			}
-			else
-			{
-				//this.productRange.add(new AlcoholDrink(name, purPrice, kind, volume, amount, alcoAmount));
-				this.productRange.put(name, new AlcoholDrink(name, purPrice, kind, volume, amount, alcoAmount));
-				System.out.println(name + " added in amount of " + amount);
-			}
+			this.productRange.put(name, this.createDrink(name, purPrice, kind, volume, amount, alcoAmount, constituents));
 		}
 		catch (Exception e)
 		{
@@ -97,9 +86,19 @@ public class Store
 		this.extraCharge = extraCharge;
 	}
 	
-	public Drink createDrink()
+	public Drink createDrink(String name, double purPrice, String kind, double volume, int amount, double alcoAmount, String...constituents)
 	{
-		
-		return null;
+		if(constituents != null)//crateDrink
+		{
+			//this.productRange.add(new UnAlñoholDrink(name, purPrice, kind, volume, amount, constituents));
+			return new NonAlcohollDrink(name, purPrice, kind, volume, amount, constituents);
+			//System.out.println(name + " added in amount of " + amount);
+		}
+		else
+		{
+			//this.productRange.add(new AlcoholDrink(name, purPrice, kind, volume, amount, alcoAmount));
+			return new AlcoholDrink(name, purPrice, kind, volume, amount, alcoAmount);
+			//System.out.println(name + " added in amount of " + amount);
+		}
 	}
 }
