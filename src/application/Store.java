@@ -29,7 +29,15 @@ public class Store
 	{
 		this.isOpen = false;
 		this.cashBox = 0;
-		this.productRange = new HashMap<String, Drink>();
+		this.productRange =new TreeMap<String,Drink>(
+				new Comparator<String>() {
+					@Override
+					public int compare(String k1, String k2)
+					{
+						return productRange.get(k2).compareTo(productRange.get(k1));
+					}
+				}
+			);
 		this.storeEmulation = new StoreEmulation(this);
 		this.storeEmulation.startEmulation();
 		
