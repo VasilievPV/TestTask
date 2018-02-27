@@ -20,7 +20,6 @@ public class Store
 	private boolean isOpen;
 	private double cashBox;
 	private Map<String, Drink> productRange;
-	private Map<String, Drink> sortedProductRange;
 	private int extraCharge;
 	private StoreEmulation storeEmulation;
 	
@@ -109,7 +108,7 @@ public class Store
 	
 	private void sortProductRange()
 	{
-		this.sortedProductRange = new TreeMap<String,Drink>(
+		/*this.sortedProductRange = new TreeMap<String,Drink>(
 				new Comparator<String>() {
 						@Override
 						public int compare(String k1, String k2)
@@ -118,6 +117,9 @@ public class Store
 						}
 					}
 				);
+		
+		//Map<Integer, Integer> map = new HashMap<>();*/
+		HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();
 		
 	}
 }
