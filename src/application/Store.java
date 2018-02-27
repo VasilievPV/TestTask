@@ -17,9 +17,10 @@ import java.util.TreeMap;
 public class Store
 {
 	//Fields
-	private boolean isOpen;//rename
+	private boolean isOpen;
 	private double cashBox;
 	private Map<String, Drink> productRange;
+	private Map<String, Drink> sortedProductRange;
 	private int extraCharge;
 	private StoreEmulation storeEmulation;
 	
@@ -29,8 +30,8 @@ public class Store
 	{
 		this.isOpen = false;
 		this.cashBox = 0;
-		this.setComparator();
-		this.storeEmulation= new StoreEmulation(this);
+		this.productRange = new HashMap<String, Drink>();
+		this.storeEmulation = new StoreEmulation(this);
 		this.storeEmulation.startEmulation();
 		
 	}
@@ -41,6 +42,7 @@ public class Store
 	{
 		this.isOpen = true;
 		this.productRange = Reader.read(Constants.DATABASE_FILE_NAME);
+		this.sortProductRange();
 		
 		System.out.println("Store opened");
 	}
@@ -105,16 +107,17 @@ public class Store
 		}
 	}
 	
-	private void setComparator()
+	private void sortProductRange()
 	{
-		this.productRange = new TreeMap<String,Drink>(
+		this.sortedProductRange = new TreeMap<String,Drink>(
 				new Comparator<String>() {
-					@Override
-					public int compare(String k1, String k2)
-					{
-						return productRange.get(k2).compareTo(productRange.get(k1));
+						@Override
+						public int compare(String k1, String k2)
+						{
+							return sortedProductRange.get(k2).compareTo(sortedProductRange.get(k1));
+						}
 					}
-				}
 				);
+		
 	}
 }
