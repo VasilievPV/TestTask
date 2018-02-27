@@ -2,6 +2,8 @@ package application;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Dictionary;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -10,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.TreeMap;
 
 public class Store
 {
@@ -26,9 +29,10 @@ public class Store
 	{
 		this.isOpen = false;
 		this.cashBox = 0;
-		this.productRange = new HashMap<String, Drink>();
+		this.setComparator();
 		this.storeEmulation= new StoreEmulation(this);
 		this.storeEmulation.startEmulation();
+		
 	}
 	
 	
@@ -99,5 +103,18 @@ public class Store
 		{
 			return new AlcoholDrink(name, purPrice, kind, volume, amount, alcoAmount);
 		}
+	}
+	
+	private void setComparator()
+	{
+		this.productRange = new TreeMap<String,Drink>(
+				new Comparator<String>() {
+					@Override
+					public int compare(String k1, String k2)
+					{
+						return productRange.get(k2).compareTo(productRange.get(k1));
+					}
+				}
+				);
 	}
 }

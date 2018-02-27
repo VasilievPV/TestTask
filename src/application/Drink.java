@@ -48,4 +48,9 @@ public class Drink
 	{
 		return this.name;
 	}
+	
+	public int compareTo(Drink d)
+	{
+		return 0;
+	}
 }

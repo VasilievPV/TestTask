@@ -29,4 +29,17 @@ public class AlcoholDrink extends Drink
 	{
 		return super.getName();
 	}
+	
+	public int compareTo(Drink d)
+	{
+		if(d instanceof AlcoholDrink)
+		{
+			return -1;
+		}
+		if(d instanceof NonAlcoholDrink)
+		{
+			return 1;
+		}
+		return 55;
+	}
 }
