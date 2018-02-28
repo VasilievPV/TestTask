@@ -18,7 +18,7 @@ public final class Reader
 		
 		try(Scanner scan = new Scanner(new File(filePath)))
 		{
-			if (scan.nextLine().compareTo(Constants.DATABASE_NAME)==0)
+			if (scan.nextLine().compareTo(Constants.DATABASE_HEADER)==0)
 			{
 				while(scan.hasNextLine())
 				{

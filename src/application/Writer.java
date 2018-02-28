@@ -10,7 +10,7 @@ public final class Writer
 	public static void write(String filePath, Collection<Drink> productRange)
 	{
 		StringBuilder sbProductRange = new StringBuilder();
-		sbProductRange.append(Constants.DATABASE_NAME + System.lineSeparator());
+		sbProductRange.append(Constants.DATABASE_HEADER + System.lineSeparator());
 		
 		for(Drink d : productRange)
 		{
@@ -36,6 +36,10 @@ public final class Writer
 			e.printStackTrace();
 			System.out.println("Write failed!");
 		}
+	}
+	
+	public static void writeStatistics(Statistics statistics)
+	{
 		
 	}
 }
