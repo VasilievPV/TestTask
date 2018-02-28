@@ -125,4 +125,9 @@ public class Store
 		Collections.sort(pRange, cmp);
 		return pRange;
 	}
+	
+	public void cellProducts()
+	{
+		
+	}
 }
