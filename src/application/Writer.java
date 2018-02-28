@@ -3,9 +3,7 @@ package application;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Collection;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Map;
+
 
 public final class Writer
 {
