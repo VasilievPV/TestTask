@@ -10,7 +10,7 @@ public class Buyer
 	
 	public Buyer()
 	{
-		this.rnd= new Random();
+		this.rnd = new Random();
 		this.purchasesAmount = 0;
 	}
 	
@@ -28,6 +28,6 @@ public class Buyer
 			selectedDrinks[i] = drinkNames.get(this.rnd.nextInt(drinkNames.size()));
 		}
 		
-		return null;
+		return selectedDrinks;
 	}
 }

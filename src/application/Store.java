@@ -128,6 +128,22 @@ public class Store
 	
 	public void cellProducts()
 	{
-		
+		Buyer b = new Buyer();
+		String[] drinksToBuy = b.buy(new ArrayList<String>(this.productRange.keySet()));
+		for (String drink : drinksToBuy)
+		{
+			try
+			{
+				Drink d = this.productRange.get(drink);
+				d.reduceAmount();
+				double price = d.getPurPrice() + (d.getPurPrice() * 100 / this.extraCharge);
+				this.cashBox += price;
+				System.out.println("Drink " + d.getName() + " was sold. price: " + price);
+			}
+			catch(NullPointerException e)
+			{
+				System.out.println("Visitor didn`t purchases");
+			}
+		}
 	}
 }

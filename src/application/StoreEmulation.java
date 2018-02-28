@@ -17,6 +17,7 @@ public class StoreEmulation
 	
 	private TimerTask changeExCharge;
 	private TimerTask closeStore;
+	private TimerTask buyersComing;
 	
 	public StoreEmulation(Store store)
 	{
@@ -49,6 +50,15 @@ public class StoreEmulation
 			}
 		};
 		
+		this.buyersComing = new TimerTask() {
+			
+			@Override
+			public void run() 
+			{
+				
+			}
+		};
+		
 		
 		if (ldt.getHour() >= 8 && ldt.getHour() < 21)
 		{
@@ -66,13 +76,15 @@ public class StoreEmulation
 	
 	private void setRules()
 	{
-		if(ldt.getDayOfWeek()==DayOfWeek.SATURDAY || ldt.getDayOfWeek() == DayOfWeek.SUNDAY)
+		//set extra charge depending on day of week
+		if(this.ldt.getDayOfWeek()==DayOfWeek.SATURDAY || this.ldt.getDayOfWeek() == DayOfWeek.SUNDAY)
 		{
 			this.store.setExtraCharge(15);
 		}
 		else
 			this.store.setExtraCharge(10);
 		
+		//Change extra charge after 18 pm
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(Calendar.HOUR_OF_DAY, 18);
 		calendar.set(Calendar.MINUTE, 0);
@@ -80,10 +92,19 @@ public class StoreEmulation
 		Date time18 = calendar.getTime();
 		timer.schedule(this.changeExCharge, time18);
 		
+		//Close store at the end of a day
 		calendar.set(Calendar.HOUR_OF_DAY, 21);
 		Date time21 = calendar.getTime();
 		timer.schedule(closeStore, time21);
 		
+		//schedule visits of buyers
 		
+	}
+	
+	private TimerTask createBuyer(int count, int position)
+	{
+		
+		
+		return null;
 	}
 }

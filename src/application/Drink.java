@@ -45,6 +45,11 @@ public class Drink
 		this.amount += amount;
 	}
 	
+	public void reduceAmount()
+	{
+		this.amount --;
+	}
+	
 	public String getName()
 	{
 		return this.name;
@@ -54,5 +59,9 @@ public class Drink
 	{
 		return 0;
 	}
-
+	
+	public double getPurPrice()
+	{
+		return this.purPrice;
+	}
 }
