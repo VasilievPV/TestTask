@@ -2,6 +2,7 @@ package application;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Dictionary;
@@ -57,7 +58,7 @@ public class Store
 	public void close()
 	{
 		this.isOpen = false;
-		Writer.write(Constants.DATABASE_FILE_NAME, this.productRange);
+		Writer.write(Constants.DATABASE_FILE_NAME, this.sortProductRange());
 		
 		System.out.println("Store closed");
 	}
@@ -114,20 +115,19 @@ public class Store
 		}
 	}
 	
-	private void sortProductRange()
+	private Collection<Drink> sortProductRange()
 	{
-		/*this.sortedProductRange = new TreeMap<String,Drink>(
-				new Comparator<String>() {
-						@Override
-						public int compare(String k1, String k2)
-						{
-							return sortedProductRange.get(k2).compareTo(sortedProductRange.get(k1));
-						}
-					}
-				);
+		List<Drink> pRange = new ArrayList<Drink>(this.productRange.values());
+		Comparator<Drink> cmp = new Comparator<Drink>() {
+			
+			@Override
+			public int compare(Drink d1, Drink d2)
+			{
+				return d2.compareTo(d1);
+			}
+		};
 		
-		//Map<Integer, Integer> map = new HashMap<>();*/
-		HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();
-		
+		Collections.sort(pRange, cmp);
+		return pRange;
 	}
 }

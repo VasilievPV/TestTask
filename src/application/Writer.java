@@ -2,41 +2,35 @@ package application;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
 public final class Writer
 {
-	public static void write(String filePath, Map<String, Drink> productRange)
+	public static void write(String filePath, Collection<Drink> productRange)
 	{
-		StringBuilder sbAlco = new StringBuilder();
-		StringBuilder sbNonAlco = new StringBuilder();
-		sbAlco.append(Constants.DATABASE_NAME + System.lineSeparator());
+		StringBuilder sbProductRange = new StringBuilder();
+		sbProductRange.append(Constants.DATABASE_NAME + System.lineSeparator());
 		
-		for(Drink d : productRange.values())
+		for(Drink d : productRange)
 		{
-			try
-			{
-				AlcoholDrink ad = (AlcoholDrink)d;
-				System.out.println("this is alco drink;");
-				sbAlco.append(ad.toString());
-			}
-			catch(ClassCastException e)
-			{				
-				System.out.println("this is non-alco drink;");
-				NonAlcoholDrink uad = (NonAlcoholDrink)d;
-				sbNonAlco.append(uad.toString());
-			}
+			if(d instanceof AlcoholDrink)
+				sbProductRange.append(d.toString());
 			
+		}
+		sbProductRange.append(System.lineSeparator());
+		for(Drink d : productRange)
+		{
+			if(d instanceof NonAlcoholDrink)
+				sbProductRange.append(d.toString());
 		}
 		
 		try 
 		{
 			FileWriter fw = new FileWriter(filePath);
-			fw.write(sbAlco.toString());
-			fw.write(System.lineSeparator());
-			fw.write(sbNonAlco.toString());
+			fw.write(sbProductRange.toString());
 			fw.close();
 		}
 		catch (IOException e)
