@@ -130,20 +130,26 @@ public class Store
 	{
 		Buyer b = new Buyer();
 		String[] drinksToBuy = b.buy(new ArrayList<String>(this.productRange.keySet()));
-		for (String drink : drinksToBuy)
+		try
 		{
-			try
+			for (String drink : drinksToBuy)
 			{
 				Drink d = this.productRange.get(drink);
-				d.reduceAmount();
-				double price = d.getPurPrice() + (d.getPurPrice() * 100 / this.extraCharge);
-				this.cashBox += price;
-				System.out.println("Drink " + d.getName() + " was sold. price: " + price);
+				if(d.getAmount() > 0)
+				{
+					d.reduceAmount();
+					double price = d.getPurPrice() + ((d.getPurPrice() * this.extraCharge )/ 100 );
+					this.cashBox += price;
+					System.out.println("Drink \"" + d.getName() + "\" was sold. price: " + price);
+				}
+				else
+					System.out.println("Drink \"" + d.getName() + "\" is over");
 			}
-			catch(NullPointerException e)
-			{
-				System.out.println("Visitor didn`t purchases");
-			}
+			
+		}
+		catch(NullPointerException e)
+		{
+			System.out.println("Visitor didn`t purchases");
 		}
 	}
 }

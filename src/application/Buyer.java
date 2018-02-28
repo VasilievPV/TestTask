@@ -25,6 +25,7 @@ public class Buyer
 		
 		for(int i = 0; i < selectedDrinks.length; i ++)
 		{
+			
 			selectedDrinks[i] = drinkNames.get(this.rnd.nextInt(drinkNames.size()));
 		}
 		
