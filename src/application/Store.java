@@ -1,5 +1,6 @@
 package application;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -22,6 +23,7 @@ public class Store
 	private int extraCharge;
 	private StoreEmulation storeEmulation;
 	private TextArea output;
+	private Statistics statistics;
 	
 	
 	//Constructors
@@ -41,7 +43,7 @@ public class Store
 	{
 		this.isOpen = true;
 		this.productRange = Reader.read(Constants.DATABASE_FILE_NAME);
-		this.sortProductRange();
+		this.statistics = new Statistics(this.productRange);
 		
 		this.printReport("Store opened!");
 	}

@@ -1,13 +1,17 @@
 package application;
 
+import java.util.Map;
+
 public class Statistics 
 {
 	private double profit;
 	private double loss;
+	private Map<String,Drink> productRange;
 	
-	public Statistics()
+	
+	public Statistics(Map<String,Drink> productRange)
 	{
-		
+		this.productRange = productRange;
 	}
 	
 	public void productSoldReport(Drink drink, double price)

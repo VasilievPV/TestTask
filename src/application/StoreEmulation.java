@@ -109,7 +109,13 @@ public class StoreEmulation
 		calendar.set(Calendar.HOUR_OF_DAY, 21);
 		Date time21 = calendar.getTime();
 		this.timer.schedule(closeStore, time21);
-		this.timer.schedule(purchaseOnStoreClosing, time21);
+		
+		//purchase before closing
+		calendar.set(Calendar.HOUR_OF_DAY, 20);
+		calendar.set(Calendar.MINUTE, 59);
+		Date time20_59 = calendar.getTime();
+		this.timer.schedule(purchaseOnStoreClosing, time20_59);
+		calendar.set(Calendar.MINUTE, 0);
 		
 		//schedule visits of buyers
 		int buyersCount = 20 - this.ldt.getHour();
