@@ -8,7 +8,8 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btn_Test" layoutX="499.0" layoutY="361.0" mnemonicParsing="false" onAction="#btn_Test_Click" prefHeight="25.0" prefWidth="87.0" text="TEST" />
+            <Button fx:id="btn_Test" layoutX="499.0" layoutY="361.0" mnemonicParsing="false" onAction="#btn_Test_Click" prefHeight="25.0" prefWidth="87.0" text="TEST" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
+            <TextArea fx:id="txtArea_Output" layoutX="14.0" layoutY="14.0" prefHeight="257.0" prefWidth="590.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
          </children>
       </AnchorPane>
    </center>

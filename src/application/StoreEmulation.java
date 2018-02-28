@@ -18,6 +18,7 @@ public class StoreEmulation
 	private TimerTask changeExCharge;
 	private TimerTask closeStore;
 	private TimerTask buyersComing;
+	private TimerTask purchaseOnStoreClosing;
 	
 	public StoreEmulation(Store store)
 	{
@@ -55,10 +56,22 @@ public class StoreEmulation
 			@Override
 			public void run() 
 			{
-				
+				store.cellProducts();
 			}
 		};
 		
+		this.purchaseOnStoreClosing = new TimerTask() {
+			
+			@Override
+			public void run()
+			{
+				for(Drink d : store.getProductRange().values())
+				{
+					if(d.getAmount() < 10)
+						d.addAmount(150);
+				}
+			}
+		};
 		
 		if (ldt.getHour() >= 8 && ldt.getHour() < 21)
 		{
@@ -67,7 +80,7 @@ public class StoreEmulation
 		}
 		else 
 		{
-			System.out.println("This is not a time to open store");
+			this.store.printReport("This is not a time to open store");
 		}
 		
 		
@@ -90,21 +103,28 @@ public class StoreEmulation
 		calendar.set(Calendar.MINUTE, 0);
 		calendar.set(Calendar.SECOND, 0);
 		Date time18 = calendar.getTime();
-		timer.schedule(this.changeExCharge, time18);
+		this.timer.schedule(this.changeExCharge, time18);
 		
 		//Close store at the end of a day
 		calendar.set(Calendar.HOUR_OF_DAY, 21);
 		Date time21 = calendar.getTime();
-		timer.schedule(closeStore, time21);
+		this.timer.schedule(closeStore, time21);
+		this.timer.schedule(purchaseOnStoreClosing, time21);
 		
 		//schedule visits of buyers
+		int buyersCount = 20 - this.ldt.getHour();
+		if(buyersCount > 0)
+		{
+			Date[] visitDates = new Date[buyersCount];
+			for(int i = 0; i < buyersCount; i ++)
+			{
+				calendar.set(Calendar.HOUR_OF_DAY, ldt.getHour() + 1 + i);
+				visitDates[i] = calendar.getTime();
+				this.timer.schedule(this.buyersComing, visitDates[i]);
+			}
+		}
+		
 		
 	}
-	
-	private TimerTask createBuyer(int count, int position)
-	{
-		
-		
-		return null;
-	}
+
 }

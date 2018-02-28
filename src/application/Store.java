@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
 import java.util.TreeMap;
+
+import javafx.scene.control.TextArea;
 
 public class Store
 {
@@ -18,25 +21,18 @@ public class Store
 	private Map<String, Drink> productRange;
 	private int extraCharge;
 	private StoreEmulation storeEmulation;
+	private TextArea output;
 	
 	
 	//Constructors
-	public Store()
+	public Store(TextArea output)
 	{
 		this.isOpen = false;
 		this.cashBox = 0;
-		this.productRange =new TreeMap<String,Drink>(
-				new Comparator<String>() {
-					@Override
-					public int compare(String k1, String k2)
-					{
-						return productRange.get(k2).compareTo(productRange.get(k1));
-					}
-				}
-			);
+		this.productRange = new HashMap<String, Drink>();
 		this.storeEmulation = new StoreEmulation(this);
 		this.storeEmulation.startEmulation();
-		
+		this.output = output;
 	}
 	
 	
@@ -47,7 +43,7 @@ public class Store
 		this.productRange = Reader.read(Constants.DATABASE_FILE_NAME);
 		this.sortProductRange();
 		
-		System.out.println("Store opened");
+		this.printReport("Store opened!");
 	}
 	
 	public void close()
@@ -55,7 +51,7 @@ public class Store
 		this.isOpen = false;
 		Writer.write(Constants.DATABASE_FILE_NAME, this.sortProductRange());
 		
-		System.out.println("Store closed");
+		this.printReport("Store closed!");
 	}
 
 	public void addDrink(String name, double purPrice, String kind, double volume, int amount, double alcoAmount, String...constituents )
@@ -63,7 +59,7 @@ public class Store
 		try
 		{
 			this.productRange.put(name, this.createDrink(name, purPrice, kind, volume, amount, alcoAmount, constituents));
-			System.out.println(name + " added in amount of " + amount);
+			this.printReport(name + " added in amount of " + amount);
 		}
 		catch (Exception e)
 		{
@@ -130,26 +126,46 @@ public class Store
 	{
 		Buyer b = new Buyer();
 		String[] drinksToBuy = b.buy(new ArrayList<String>(this.productRange.keySet()));
+		int count = 0;
+		double extraCharge = this.extraCharge;
 		try
 		{
 			for (String drink : drinksToBuy)
 			{
+				count ++;
 				Drink d = this.productRange.get(drink);
+				if(count > 2)
+				{
+					extraCharge = 7;
+				}
+					
 				if(d.getAmount() > 0)
 				{
 					d.reduceAmount();
-					double price = d.getPurPrice() + ((d.getPurPrice() * this.extraCharge )/ 100 );
+					double price = d.getPurPrice() + ((d.getPurPrice() * extraCharge )/ 100 );
 					this.cashBox += price;
-					System.out.println("Drink \"" + d.getName() + "\" was sold. price: " + price);
+					this.printReport("Drink \"" + d.getName() + "\" was sold. price: " + price);
 				}
 				else
-					System.out.println("Drink \"" + d.getName() + "\" is over");
+					this.printReport("Drink \"" + d.getName() + "\" is over");
 			}
 			
 		}
 		catch(NullPointerException e)
 		{
-			System.out.println("Visitor didn`t purchases");
+			this.printReport("Visitor didn`t purchases");
+		}
+	}
+	
+	public void printReport(String report)
+	{
+		try
+		{
+			this.output.appendText(report + System.lineSeparator());
+		}
+		catch(NullPointerException e)
+		{
+			e.printStackTrace();
 		}
 	}
 }
