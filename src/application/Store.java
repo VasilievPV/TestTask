@@ -43,7 +43,8 @@ public class Store
 	{
 		this.isOpen = true;
 		this.productRange = Reader.read(Constants.DATABASE_FILE_NAME);
-		this.statistics = new Statistics(this.productRange);
+		//this.statistics = Reader.readStatistics(Constants.STATISTICS_FILE_NAME);
+		this.statistics=new Statistics(this.productRange);
 		
 		this.printReport("Store opened!");
 	}

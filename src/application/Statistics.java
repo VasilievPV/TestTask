@@ -29,6 +29,14 @@ public class Statistics
 		this.profitProperty = new SimpleStringProperty(Double.toString(this.profit));
 	}
 	
+	public Statistics(double profit, double loss, List<DrinkStatistic> list)
+	{
+		this.profit = profit;
+		this.profitProperty.set(Double.toString(profit));
+		this.loss = loss;
+		this.drinkStatistics = list;
+	}
+	
 	public void productSoldReport(Drink drink, double price)
 	{
 		this.profit += price - drink.getPurPrice();

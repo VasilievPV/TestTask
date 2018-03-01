@@ -59,6 +59,6 @@ public class DrinkStatistic
 		String purchased = Integer.toString(this.puchased);
 		String sold = Integer.toString(this.sold);
 		
-		return this.name + " " + purchased + " " + sold + System.lineSeparator();
+		return this.name + "," + purchased + "," + sold + System.lineSeparator();
 	}
 }

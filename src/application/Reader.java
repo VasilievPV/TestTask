@@ -80,7 +80,43 @@ public final class Reader
 	
 	public static Statistics readStatistics(String filePath)
 	{
+		List<String> lines = new ArrayList<String>();
+		List<DrinkStatistic> ds = new ArrayList<DrinkStatistic>();
 		
-		return null;
+		try(Scanner scan = new Scanner(new File(filePath)))
+		{
+			if (scan.nextLine().compareTo(Constants.STATISTICS_HEADER)==0)
+			{
+				while(scan.hasNext())
+				{
+					lines.add(scan.nextLine());
+				}
+			}
+			else
+			{
+				System.out.println(Constants.WRONG_FILE);
+				return null;
+			}
+		}
+		catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		
+		double profit = Double.parseDouble(lines.get(0));
+		double loss = Double.parseDouble(lines.get(1));
+		lines.remove(0);
+		lines.remove(0);
+		
+		String[] values = null;
+		for(String line : lines)
+		{
+			values = line.split(",");
+			ds.add(new DrinkStatistic(values[0], Integer.parseInt(values[1]), Integer.parseInt(values[2])));
+		}
+		
+		return new Statistics(profit, loss, ds);
 	}
+	
+	
 }
