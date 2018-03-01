@@ -32,6 +32,8 @@ public class MainViewController implements Initializable
 	private void btn_Test_Click()
 	{
 		this.store.cellProducts();
+		this.store.purchaseExistingDrink("Первак", 100);
+		this.store.close();
 		//s.cellProducts();
 		/*s.addDrink("NIMMIROFF", 90.3, "крепкие напитки", 0.5, 20, 40.0, null);
 		s.addDrink("Наш Сок яблочный", 25, "Соки", 2.0, 35, 0, "Мякоть яблока", "E200", "E554");

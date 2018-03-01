@@ -27,6 +27,7 @@ public class Statistics
 			this.drinkStatistics.add(new DrinkStatistic(s));
 		}
 		this.profit = 0;
+		this.loss = 0;
 		this.profitProperty = new SimpleStringProperty(Double.toString(this.profit));
 	}
 	
@@ -47,9 +48,18 @@ public class Statistics
 		this.profitProperty.set(Double.toString(this.profit));
 	}
 	
-	public void productPurchasedReport(Drink drink, int amount)
+	public void productPurchasedReport(String name, int amount)
 	{
-		
+		DrinkStatistic currentDs = null;
+		for(DrinkStatistic ds : this.drinkStatistics)
+		{
+			if(ds.getName().equals(name))
+			{
+				currentDs = ds;
+			}
+		}
+		currentDs.addPurchased(amount);
+		this.loss += this.productRange.get(name).getPurPrice() * amount;
 	}
 	
 	public StringProperty getProfitProperty()
@@ -59,6 +69,14 @@ public class Statistics
 	
 	public String toString()
 	{
-		return "";
+		StringBuilder sb = new StringBuilder();
+		sb.append(this.profit + System.lineSeparator());
+		sb.append(this.loss + System.lineSeparator());
+		for(DrinkStatistic ds : this.drinkStatistics)
+		{
+			sb.append(ds.toString());
+		}
+		
+		return sb.toString();
 	}
 }

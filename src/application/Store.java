@@ -52,6 +52,7 @@ public class Store
 	{
 		this.isOpen = false;
 		Writer.write(Constants.DATABASE_FILE_NAME, this.sortProductRange());
+		Writer.writeStatistics(Constants.STATISTICS_FILE_NAME, this.statistics);
 		
 		this.printReport("Store closed!");
 	}
@@ -77,6 +78,7 @@ public class Store
 	public void purchaseExistingDrink(String name, int amount)
 	{
 		this.productRange.get(name).addAmount(amount);
+		this.statistics.productPurchasedReport(name, amount);
 	}
 	
 	public void setProductRange(Hashtable<String, Drink> productRange)

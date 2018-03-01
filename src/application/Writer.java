@@ -38,8 +38,22 @@ public final class Writer
 		}
 	}
 	
-	public static void writeStatistics(Statistics statistics)
+	public static void writeStatistics(String filePath, Statistics statistics)
 	{
+		StringBuilder sb = new StringBuilder();
+		sb.append(Constants.STATISTICS_HEADER + System.lineSeparator());
+		sb.append(statistics.toString());
 		
+		try 
+		{
+			FileWriter fw = new FileWriter(filePath);
+			fw.write(sb.toString());
+			fw.close();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+			System.out.println("Write failed!");
+		}
 	}
 }

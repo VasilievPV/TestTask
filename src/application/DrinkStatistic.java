@@ -48,4 +48,17 @@ public class DrinkStatistic
 	{
 		this.sold ++;
 	}
+	
+	public void addPurchased(int amount)
+	{
+		this.puchased += amount;
+	}
+	
+	public String toString()
+	{
+		String purchased = Integer.toString(this.puchased);
+		String sold = Integer.toString(this.sold);
+		
+		return this.name + " " + purchased + " " + sold + System.lineSeparator();
+	}
 }
