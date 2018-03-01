@@ -77,4 +77,10 @@ public final class Reader
 		
 		return new NonAlcoholDrink(fields[0].substring(1, fields[0].length() - 1), Double.parseDouble(fields[1]), fields[2].substring(1, fields[2].length() - 1), Double.parseDouble(fields[3]), Integer.parseInt(fields[4]), fields[5]);
 	}
+	
+	public static Statistics readStatistics(String filePath)
+	{
+		
+		return null;
+	}
 }

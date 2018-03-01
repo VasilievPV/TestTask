@@ -3,8 +3,6 @@ package application;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-import javafx.beans.property.Property;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
