@@ -17,8 +17,8 @@ public class StoreEmulation
 	
 	private TimerTask changeExCharge;
 	private TimerTask closeStore;
-	private TimerTask buyersComing;
 	private TimerTask purchaseOnStoreClosing;
+	private TimerTask[] buyersComing;
 	
 	public StoreEmulation(Store store)
 	{
@@ -51,15 +51,6 @@ public class StoreEmulation
 			}
 		};
 		
-		this.buyersComing = new TimerTask() {
-			
-			@Override
-			public void run() 
-			{
-				store.cellProducts();
-			}
-		};
-		
 		this.purchaseOnStoreClosing = new TimerTask() {
 			
 			@Override
@@ -85,6 +76,21 @@ public class StoreEmulation
 		
 		
 		
+	}
+	
+	private void onBuyersComing()
+	{
+		for (TimerTask t : this.buyersComing)
+		{
+			t = new TimerTask() {
+			
+			@Override
+			public void run() 
+			{
+				store.cellProducts();
+			}
+		};
+		}
 	}
 	
 	private void setRules()
@@ -122,11 +128,24 @@ public class StoreEmulation
 		if(buyersCount > 0)
 		{
 			Date[] visitDates = new Date[buyersCount];
-			for(int i = 0; i < buyersCount; i ++)
+			this.buyersComing = new TimerTask[buyersCount];
+			for (int i = 0; i < this.buyersComing.length; i++)
 			{
-				calendar.set(Calendar.HOUR_OF_DAY, ldt.getHour() + 1 + i);
-				visitDates[i] = calendar.getTime();
-				this.timer.schedule(this.buyersComing, visitDates[i]);
+				this.buyersComing[i] = new TimerTask() {
+				
+				@Override
+				public void run() 
+				{
+					store.cellProducts();
+				}
+				};
+			}
+			
+			for(int i1 = 0; i1 < buyersCount; i1 ++)
+			{
+				calendar.set(Calendar.HOUR_OF_DAY, ldt.getHour() + 1 + i1);
+				visitDates[i1] = calendar.getTime();
+				this.timer.schedule(this.buyersComing[i1], visitDates[i1]);
 			}
 		}
 		

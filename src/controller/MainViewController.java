@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 public class MainViewController implements Initializable
 {
@@ -24,6 +25,8 @@ public class MainViewController implements Initializable
 	private Button btn_Test;
 	@FXML
 	private TextArea txtArea_Output;
+	@FXML
+	private TextField txtField_Profit;
 	
 	@FXML
 	private void btn_Test_Click()
@@ -51,6 +54,7 @@ public class MainViewController implements Initializable
 		
 		this.store = new Store(this.txtArea_Output);
 		this.store.open();
+		this.txtField_Profit.textProperty().bind(this.store.getStatistics().getProfitProperty());
 	}
 
 }

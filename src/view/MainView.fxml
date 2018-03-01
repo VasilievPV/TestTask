@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -10,6 +11,8 @@
          <children>
             <Button fx:id="btn_Test" layoutX="499.0" layoutY="361.0" mnemonicParsing="false" onAction="#btn_Test_Click" prefHeight="25.0" prefWidth="87.0" text="TEST" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
             <TextArea fx:id="txtArea_Output" layoutX="14.0" layoutY="14.0" prefHeight="257.0" prefWidth="590.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+            <Text layoutX="26.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profit: " AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="270.0" />
+            <TextField fx:id="txtField_Profit" layoutX="40.0" layoutY="266.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="266.0" />
          </children>
       </AnchorPane>
    </center>

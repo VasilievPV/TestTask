@@ -147,6 +147,7 @@ public class Store
 					double price = d.getPurPrice() + ((d.getPurPrice() * extraCharge )/ 100 );
 					this.cashBox += price;
 					this.printReport("Drink \"" + d.getName() + "\" was sold. price: " + price);
+					this.statistics.productSoldReport(d, price);
 				}
 				else
 					this.printReport("Drink \"" + d.getName() + "\" is over");
@@ -167,7 +168,12 @@ public class Store
 		}
 		catch(NullPointerException e)
 		{
-			e.printStackTrace();
+			System.out.println("Can`t print message!");
 		}
+	}
+	
+	public Statistics getStatistics()
+	{
+		return this.statistics;
 	}
 }
