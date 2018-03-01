@@ -140,7 +140,7 @@ public class Store
 				Drink d = this.productRange.get(drink);
 				if(count > 2)
 				{
-					extraCharge = 7;
+					extraCharge = Constants.MIN_EXTRACHARGE;
 				}
 					
 				if(d.getAmount() > 0)

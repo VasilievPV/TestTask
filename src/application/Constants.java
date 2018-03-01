@@ -9,4 +9,5 @@ public final class Constants
 	public final static String WRONG_FILE = "Wrong file!";
 	public final static int DRINK_FIELDS_COUNT = 6;
 	public final static int MAX_PURCHASES_AMOUNT = 10;
+	public final static int MIN_EXTRACHARGE = 7;
 }
