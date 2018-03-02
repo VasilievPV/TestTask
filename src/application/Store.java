@@ -15,8 +15,8 @@ import javafx.scene.control.TextArea;
 public class Store
 {
 	//Fields
+	@SuppressWarnings("unused")
 	private boolean isOpen;
-	private double cashBox;
 	private Map<String, Drink> productRange;
 	private int extraCharge;
 	private StoreEmulation storeEmulation;
@@ -34,7 +34,6 @@ public class Store
 		this.productRangeProperty=new SimpleStringProperty();
 		this.extraChargeProperty=new SimpleStringProperty();
 		this.isOpen = false;
-		this.cashBox = 0;
 		this.productRange = new HashMap<String, Drink>();
 		this.storeEmulation = new StoreEmulation(this);
 		this.storeEmulation.startEmulation();
@@ -75,6 +74,7 @@ public class Store
 		{
 			e.printStackTrace();
 		}
+		this.productRangeProperty.set(this.productRangeToString());
 	}
 	
 	public Map<String, Drink> getProductRange()
@@ -155,7 +155,6 @@ public class Store
 				{
 					d.reduceAmount();
 					double price = d.getPurPrice() + ((d.getPurPrice() * extraCharge )/ 100 );
-					this.cashBox += price;
 					this.printReport("Drink \"" + d.getName() + "\" was sold. price: " + price);
 					this.statistics.productSoldReport(d, price);
 				}
@@ -168,6 +167,8 @@ public class Store
 		{
 			this.printReport("Visitor didn`t purchases");
 		}
+		
+		this.productRangeProperty.set(this.productRangeToString());
 	}
 	
 	public void printReport(String report)

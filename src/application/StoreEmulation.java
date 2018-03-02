@@ -16,6 +16,7 @@ public class StoreEmulation
 	private TimerTask changeExCharge;
 	private TimerTask closeStore;
 	private TimerTask purchaseOnStoreClosing;
+	private TimerTask openStore;
 	private TimerTask[] buyersComing;
 	
 	public StoreEmulation(Store store)
@@ -28,6 +29,15 @@ public class StoreEmulation
 	
 	public void startEmulation()
 	{
+		this.openStore = new TimerTask() {
+			
+			@Override
+			public void run()
+			{
+				store.open();
+			}
+		};
+		
 		this.changeExCharge  = new TimerTask()
 		{			
 			@Override
@@ -75,7 +85,7 @@ public class StoreEmulation
 		
 	}
 	
-	private void onBuyersComing()
+	/*private void onBuyersComing()
 	{
 		for (TimerTask t : this.buyersComing)
 		{
@@ -88,7 +98,7 @@ public class StoreEmulation
 			}
 		};
 		}
-	}
+	}*/
 	
 	private void setRules()
 	{
@@ -146,7 +156,12 @@ public class StoreEmulation
 			}
 		}
 		
+		//schedule store opening next day
 		
+		calendar.add(Calendar.DAY_OF_MONTH, 1);
+		calendar.set(Calendar.HOUR_OF_DAY, 8);
+		Date date8 = calendar.getTime();
+		this.timer.schedule(this.openStore, date8);
 	}
 
 }

@@ -12,9 +12,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class MainViewController implements Initializable
 {
+	private Stage stage;
 	private Store store;
 	
 	@FXML
@@ -34,7 +36,7 @@ public class MainViewController implements Initializable
 	@FXML
 	Button btn_AddDrink;
 	@FXML
-	Button btn_RemoveDrink;
+	Button btn_Close;
 	
 	@FXML
 	private void btn_Test_Click()
@@ -52,20 +54,20 @@ public class MainViewController implements Initializable
 		s.purchaseExistingDrink("NIMMIROFF", 10);
 		s.close();
 		//s.setProductRange(Reader.read(Constants.DATABASE_FILE_NAME));*/
-		
-		int a=0;
-		a++;
+	
 	}
 	
 	@FXML
 	public void btn_AddDrink_Click()
 	{
-		AddDrinkController adc = new AddDrinkController();
+		@SuppressWarnings("unused")
+		AddDrinkController adc = new AddDrinkController(this.store);
 	}
 	@FXML
-	public void btn_RemoveDrink_Click()
+	public void btn_Close_Click()
 	{
-		
+		this.store.close();
+		this.stage.close();
 	}
 
 	@Override
@@ -94,6 +96,11 @@ public class MainViewController implements Initializable
 				txtField_Date.setText(Calendar.getInstance().getTime().toString());
 			}
 		}, now, 1000);
+	}
+	
+	public void setStage(Stage stage)
+	{
+		this.stage = stage;
 	}
 
 }
