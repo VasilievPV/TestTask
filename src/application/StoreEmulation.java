@@ -4,7 +4,6 @@ import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -13,7 +12,6 @@ public class StoreEmulation
 	private LocalDateTime ldt;
 	private Timer timer;
 	private Store store;
-	private Random random;
 	
 	private TimerTask changeExCharge;
 	private TimerTask closeStore;
@@ -22,7 +20,6 @@ public class StoreEmulation
 	
 	public StoreEmulation(Store store)
 	{
-		this.random = new Random();
 		this.store = store;
 		this.ldt = LocalDateTime.now();
 		this.timer = new Timer("TimeThread");

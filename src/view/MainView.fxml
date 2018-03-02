@@ -17,8 +17,8 @@
             <Text layoutX="14.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Extracharge: " AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="232.05078125" />
             <TextField fx:id="txtField_Date" layoutX="52.0" layoutY="14.0" prefHeight="25.0" prefWidth="249.0" AnchorPane.leftAnchor="46.0" AnchorPane.topAnchor="14.0" />
             <TextField fx:id="txtField_Extracharge" layoutX="84.0" layoutY="228.0" prefHeight="25.0" prefWidth="89.0" AnchorPane.leftAnchor="84.0" AnchorPane.topAnchor="228.0" />
-            <Button layoutX="507.0" layoutY="268.0" mnemonicParsing="false" text="Add drink" AnchorPane.leftAnchor="507.0" AnchorPane.topAnchor="268.0" />
-            <Button layoutX="497.0" layoutY="303.0" mnemonicParsing="false" text="Remove drink" AnchorPane.leftAnchor="497.0" AnchorPane.topAnchor="303.0" />
+            <Button fx:id="btn_AddDrink" layoutX="507.0" layoutY="268.0" mnemonicParsing="false" onAction="#btn_AddDrink_Click" text="Add drink" AnchorPane.leftAnchor="507.0" AnchorPane.topAnchor="268.0" />
+            <Button fx:id="btn_RemoveDrink" layoutX="497.0" layoutY="303.0" mnemonicParsing="false" onAction="#btn_RemoveDrink_Click" text="Remove drink" AnchorPane.leftAnchor="497.0" AnchorPane.topAnchor="303.0" />
             <TextArea fx:id="txtArea_ProductRange" layoutX="8.0" layoutY="260.0" prefHeight="135.0" prefWidth="478.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" />
          </children>
       </AnchorPane>

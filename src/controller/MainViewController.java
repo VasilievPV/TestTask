@@ -1,22 +1,12 @@
 package controller;
 
 import java.net.URL;
-import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import application.Constants;
-import application.Reader;
 import application.Store;
-import application.Writer;
-import javafx.beans.InvalidationListener;
-import javafx.beans.property.StringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -41,6 +31,10 @@ public class MainViewController implements Initializable
 	private TextField txtField_Extracharge;
 	@FXML
 	Timer timer;
+	@FXML
+	Button btn_AddDrink;
+	@FXML
+	Button btn_RemoveDrink;
 	
 	@FXML
 	private void btn_Test_Click()
@@ -63,6 +57,16 @@ public class MainViewController implements Initializable
 		a++;
 	}
 	
+	@FXML
+	public void btn_AddDrink_Click()
+	{
+		AddDrinkController adc = new AddDrinkController();
+	}
+	@FXML
+	public void btn_RemoveDrink_Click()
+	{
+		
+	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1)
@@ -72,6 +76,11 @@ public class MainViewController implements Initializable
 		this.txtField_Profit.textProperty().bind(this.store.getStatistics().getProfitProperty());
 		this.txtField_Extracharge.textProperty().bind(this.store.getExtraChargeProperty());
 		this.txtArea_ProductRange.textProperty().bind(this.store.getProductRangeProperty());
+		
+		this.txtField_Date.setDisable(true);
+		this.txtField_Profit.setDisable(true);
+		this.txtField_Extracharge.setDisable(true);
+		this.txtArea_ProductRange.setDisable(true);
 		
 		this.timer = new Timer("Clocks");
 		Calendar calendar = Calendar.getInstance();
