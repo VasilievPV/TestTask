@@ -55,8 +55,7 @@ public class MainViewController implements Initializable
 	{
 		
 		this.store = new Store(this.txtArea_Output);
-		this.store.open();
-		this.txtField_Profit.textProperty().bind(this.store.getStatistics().getProfitProperty());
+		//this.txtField_Profit.textProperty().bind(this.store.getStatistics().getProfitProperty());
 	}
 
 }
