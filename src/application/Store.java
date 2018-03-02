@@ -12,6 +12,8 @@ import java.util.Map;
 
 import java.util.TreeMap;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.scene.control.TextArea;
 
 public class Store
@@ -25,10 +27,16 @@ public class Store
 	private TextArea output;
 	private Statistics statistics;
 	
+	//Properties (javaFX)
+	private StringProperty productRangeProperty;
+	private StringProperty extraChargeProperty;
+	
 	
 	//Constructors
 	public Store(TextArea output)
 	{
+		this.productRangeProperty=new SimpleStringProperty();
+		this.extraChargeProperty=new SimpleStringProperty();
 		this.isOpen = false;
 		this.cashBox = 0;
 		this.productRange = new HashMap<String, Drink>();
@@ -43,8 +51,10 @@ public class Store
 	{
 		this.isOpen = true;
 		this.productRange = Reader.read(Constants.DATABASE_FILE_NAME);
-		//this.statistics = Reader.readStatistics(Constants.STATISTICS_FILE_NAME);
-		this.statistics=new Statistics(this.productRange);
+		this.statistics = Reader.readStatistics(Constants.STATISTICS_FILE_NAME, this.productRange);
+		this.productRangeProperty.set(this.productRangeToString());
+		
+		//this.statistics=new Statistics(this.productRange);
 		
 		this.printReport("Store opened!");
 	}
@@ -97,6 +107,7 @@ public class Store
 	public void setExtraCharge(int extraCharge)
 	{
 		this.extraCharge = extraCharge;
+		this.extraChargeProperty.set(Integer.toString(extraCharge));
 	}
 	
 	public Drink createDrink(String name, double purPrice, String kind, double volume, int amount, double alcoAmount, String...constituents)
@@ -178,5 +189,24 @@ public class Store
 	public Statistics getStatistics()
 	{
 		return this.statistics;
+	}
+	
+	public StringProperty getExtraChargeProperty()
+	{
+		return this.extraChargeProperty;
+	}
+	public StringProperty getProductRangeProperty()
+	{
+		return this.productRangeProperty;
+	}
+	public String productRangeToString()
+	{
+		StringBuilder sb = new StringBuilder();
+		for(Drink d : this.productRange.values())
+		{
+			sb.append("\"" + d.getName() + "\" Amount: " + d.getAmount() + " Volume: "+ d.getVolume() + " Price: " + (d.getPurPrice() + this.extraCharge) + System.lineSeparator());
+		}
+		
+		return sb.toString();
 	}
 }

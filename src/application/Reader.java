@@ -78,7 +78,7 @@ public final class Reader
 		return new NonAlcoholDrink(fields[0].substring(1, fields[0].length() - 1), Double.parseDouble(fields[1]), fields[2].substring(1, fields[2].length() - 1), Double.parseDouble(fields[3]), Integer.parseInt(fields[4]), fields[5]);
 	}
 	
-	public static Statistics readStatistics(String filePath)
+	public static Statistics readStatistics(String filePath, Map<String,Drink> productRange)
 	{
 		List<String> lines = new ArrayList<String>();
 		List<DrinkStatistic> ds = new ArrayList<DrinkStatistic>();
@@ -115,7 +115,7 @@ public final class Reader
 			ds.add(new DrinkStatistic(values[0], Integer.parseInt(values[1]), Integer.parseInt(values[2])));
 		}
 		
-		return new Statistics(profit, loss, ds);
+		return new Statistics(profit, loss, ds, productRange);
 	}
 	
 	

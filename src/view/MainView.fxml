@@ -5,14 +5,21 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainViewController">
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane minHeight="400.0" minWidth="600.0" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="btn_Test" layoutX="499.0" layoutY="361.0" mnemonicParsing="false" onAction="#btn_Test_Click" prefHeight="25.0" prefWidth="87.0" text="TEST" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
-            <TextArea fx:id="txtArea_Output" layoutX="14.0" layoutY="14.0" prefHeight="257.0" prefWidth="590.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
-            <Text layoutX="26.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profit: " AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="270.0" />
-            <TextField fx:id="txtField_Profit" layoutX="40.0" layoutY="266.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="266.0" />
+            <TextArea fx:id="txtArea_Output" layoutX="14.0" layoutY="14.0" prefHeight="174.0" prefWidth="590.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="45.0" />
+            <Text layoutX="193.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profit: " AnchorPane.leftAnchor="193.0" AnchorPane.topAnchor="232.0" />
+            <TextField fx:id="txtField_Profit" layoutX="231.0" layoutY="228.0" prefHeight="25.0" prefWidth="138.0" AnchorPane.leftAnchor="231.0" AnchorPane.topAnchor="228.0" />
+            <Text layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date: " AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="18.0" />
+            <Text layoutX="14.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Extracharge: " AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="232.05078125" />
+            <TextField fx:id="txtField_Date" layoutX="52.0" layoutY="14.0" prefHeight="25.0" prefWidth="249.0" AnchorPane.leftAnchor="46.0" AnchorPane.topAnchor="14.0" />
+            <TextField fx:id="txtField_Extracharge" layoutX="84.0" layoutY="228.0" prefHeight="25.0" prefWidth="89.0" AnchorPane.leftAnchor="84.0" AnchorPane.topAnchor="228.0" />
+            <Button layoutX="507.0" layoutY="268.0" mnemonicParsing="false" text="Add drink" AnchorPane.leftAnchor="507.0" AnchorPane.topAnchor="268.0" />
+            <Button layoutX="497.0" layoutY="303.0" mnemonicParsing="false" text="Remove drink" AnchorPane.leftAnchor="497.0" AnchorPane.topAnchor="303.0" />
+            <TextArea fx:id="txtArea_ProductRange" layoutX="8.0" layoutY="260.0" prefHeight="135.0" prefWidth="478.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" />
          </children>
       </AnchorPane>
    </center>

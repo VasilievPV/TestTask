@@ -1,8 +1,14 @@
 package controller;
 
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import application.Constants;
 import application.Reader;
 import application.Store;
@@ -26,7 +32,15 @@ public class MainViewController implements Initializable
 	@FXML
 	private TextArea txtArea_Output;
 	@FXML
+	private TextArea txtArea_ProductRange;
+	@FXML
 	private TextField txtField_Profit;
+	@FXML
+	private TextField txtField_Date;
+	@FXML
+	private TextField txtField_Extracharge;
+	@FXML
+	Timer timer;
 	
 	@FXML
 	private void btn_Test_Click()
@@ -55,7 +69,22 @@ public class MainViewController implements Initializable
 	{
 		
 		this.store = new Store(this.txtArea_Output);
-		//this.txtField_Profit.textProperty().bind(this.store.getStatistics().getProfitProperty());
+		this.txtField_Profit.textProperty().bind(this.store.getStatistics().getProfitProperty());
+		this.txtField_Extracharge.textProperty().bind(this.store.getExtraChargeProperty());
+		this.txtArea_ProductRange.textProperty().bind(this.store.getProductRangeProperty());
+		
+		this.timer = new Timer("Clocks");
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.SECOND, 5);
+		Date now = calendar.getTime();
+		timer.schedule(new TimerTask() {
+			
+			@Override
+			public void run()
+			{
+				txtField_Date.setText(Calendar.getInstance().getTime().toString());
+			}
+		}, now, 1000);
 	}
 
 }

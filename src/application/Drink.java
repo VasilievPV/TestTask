@@ -14,7 +14,7 @@ public class Drink
 		this.name = "";
 		this.purPrice = 0;
 		this.kind = "";
-		this.volume = 0d;
+		this.setVolume(0d);
 		this.amount = 0;
 	}
 	
@@ -23,7 +23,7 @@ public class Drink
 		this.name = name;
 		this.purPrice = purPrice;
 		this.kind = kind;
-		this.volume = volume;
+		this.setVolume(volume);
 		this.amount = amount;
 	}
 	
@@ -34,7 +34,7 @@ public class Drink
 		sb.append("\"" + this.name + "\", ");
 		sb.append(this.purPrice + ", ");
 		sb.append("\"" + this.kind + "\", ");
-		sb.append(this.volume + ", ");
+		sb.append(this.getVolume() + ", ");
 		sb.append(this.amount);
 		
 		return sb.toString();
@@ -69,4 +69,14 @@ public class Drink
 	{
 		return this.purPrice;
 	}
+
+	public double getVolume() {
+		return volume;
+	}
+
+	public void setVolume(double volume) {
+		this.volume = volume;
+	}
+	
+	
 }

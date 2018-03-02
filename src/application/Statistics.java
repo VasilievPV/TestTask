@@ -29,10 +29,11 @@ public class Statistics
 		this.profitProperty = new SimpleStringProperty(Double.toString(this.profit));
 	}
 	
-	public Statistics(double profit, double loss, List<DrinkStatistic> list)
+	public Statistics(double profit, double loss, List<DrinkStatistic> list, Map<String,Drink> productRange)
 	{
+		this.productRange = productRange;
 		this.profit = profit;
-		this.profitProperty.set(Double.toString(profit));
+		this.profitProperty = new SimpleStringProperty(Double.toString(profit));
 		this.loss = loss;
 		this.drinkStatistics = list;
 	}
